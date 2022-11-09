@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Autor implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String nombre;
     private boolean alta;
@@ -20,6 +20,12 @@ public class Autor implements Serializable {
 
     public Autor() {
     }
+
+    public Autor(String nombre, boolean alta) { //constructor sin id
+        this.nombre = nombre;
+        this.alta = alta;
+    }
+    
 
     public Autor(int id, String nombre, boolean alta) {
         this.id = id;
@@ -57,7 +63,7 @@ public class Autor implements Serializable {
 
     @Override
     public String toString() {
-        return "Autor{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+        return id + "\t" + nombre + "\t" + alta ;
     }
     
     

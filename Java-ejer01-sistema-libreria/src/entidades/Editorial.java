@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Editorial implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String nombre;
     private boolean alta;
@@ -20,6 +20,12 @@ public class Editorial implements Serializable {
     public Editorial() {
     }
 
+    public Editorial(String nombre, boolean alta) { //constructor sin id
+        this.nombre = nombre;
+        this.alta = alta;
+    }
+
+    
     public Editorial(int id, String nombre, boolean alta) {
         this.id = id;
         this.nombre = nombre;
@@ -58,7 +64,7 @@ public class Editorial implements Serializable {
 
     @Override
     public String toString() {
-        return "Editorial{" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+        return  id + "\t" + nombre + "\t" + alta ;
     }
     
     
