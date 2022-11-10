@@ -25,7 +25,7 @@ public class ServicioMenuAutor {
         do {
             do {
              System.out.println("Ingrese la operacion a realizar:\n1. Crear Autor \n2. Mostrar Autor por Id\n3. Editar Autor"
-                     + "\n4. Eliminar Autor\n5. Mostrar lista completa de autores \n0. Volver al menu principal");
+                     + "\n4. Dar de baja y/o Eliminar Autor\n5. Mostrar lista completa de autores \n0. Volver al menu principal");
              
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -36,7 +36,7 @@ public class ServicioMenuAutor {
             }
             
             
-        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=0 );
+        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 && opcion!=0 );
         
        
             switch(opcion)
@@ -65,15 +65,18 @@ public class ServicioMenuAutor {
                     control.editarAutor(autorEdit);
                 break;
                 case 4:
-                    System.out.println("Vamos a eliminar un Autor");
-                    System.out.println("Para eso primero tenemos que darlos de baja");
+                    System.out.println("Vamos a dar de baja a un Autor");
                     mostrarListaAutores();
                     System.out.println("Seleccione el Id del autor a dar de baja: ");
                     int idAutor2= scan.nextInt();
                     Autor autorEdit2 = control.traerAutor(idAutor2);
                     autorEdit2.setAlta(false);
                     control.editarAutor(autorEdit2);
-                    control.eliminarAutor(idAutor2);
+                    System.out.println("Quieres eliminar completamente el autor de la base de datos ? s/n");
+                    String respuesta = scan.next();
+                        if (respuesta.equalsIgnoreCase("s")) {
+                        control.eliminarAutor(idAutor2);
+                        }
                     break;
                 case 5:
                     mostrarListaAutores();
@@ -98,9 +101,9 @@ public class ServicioMenuAutor {
     public void mostrarListaAutores(){
         System.out.println("La lista total de autores es la siguiente: ");
         ArrayList<Autor>listaautores = control.traerListaAutores();
-        System.out.println("Id\tNOMBRE\t\tALTA");
+        System.out.printf("%-5s %-15s %-10s\n", "ID","NOMBRE", "ALTA");
         for (Autor listaautore : listaautores) {
-            System.out.println(listaautore);
+            listaautore.imprimirLindo();
         }
        System.out.println("------------------");
     }

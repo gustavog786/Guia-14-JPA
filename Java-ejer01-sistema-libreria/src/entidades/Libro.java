@@ -126,4 +126,10 @@ public class Libro implements Serializable {
                "\t" + ejemplaresRestantes + "\t" + alta + "\t" + autor.getNombre() + "\t" + editorial.getNombre();
     }
     
+    public void imprimirLindo(){
+        System.out.printf( "%-5s %-20s %-10s %-10s %-10s %-10s %-10s %-20s %-10s\n", 
+          isbn, titulo,anio,ejemplares,ejemplaresPrestados,ejemplaresRestantes,alta,
+          autor.getNombre(),editorial.getNombre());
+    }
+    
 }

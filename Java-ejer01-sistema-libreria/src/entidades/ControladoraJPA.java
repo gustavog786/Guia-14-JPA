@@ -33,7 +33,9 @@ public class ControladoraJPA {
         
         return controlPersis.traerListaLibros();        
     }
-    
+    public void traerLiboPorTitulo(String titulo){
+        controlPersis.traerLibroPorTitulo(titulo);
+    }
     
     //Editorial
     public void crearEditorial(Editorial editorial){

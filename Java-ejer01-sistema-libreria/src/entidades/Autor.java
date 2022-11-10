@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Autor implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nombre;
     private boolean alta;
@@ -66,5 +66,8 @@ public class Autor implements Serializable {
         return id + "\t" + nombre + "\t" + alta ;
     }
     
+    public void imprimirLindo(){
+        System.out.printf( "%-5d %-15s %-10b\n", id, nombre, alta );
+    }
     
 }

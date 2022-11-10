@@ -1,35 +1,35 @@
-
 package principal.entidades;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Carrera implements Serializable {
+public class Materia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String nombre;
+    private String tipo;
     
-    @OneToMany(mappedBy = "carre")
-    private LinkedList<Materia> listaMaterias;
+    @ManyToOne
+    private Carrera carre;
 
-    public Carrera() {
+    public Materia() {
     }
 
-    public Carrera(int id, String nombre, LinkedList<Materia> listaMaterias) {
+    public Materia(int id, String nombre, String tipo, Carrera carre) {
         this.id = id;
         this.nombre = nombre;
-        this.listaMaterias = listaMaterias;
+        this.tipo = tipo;
+        this.carre = carre;
     }
+
     
-    //Geeter and setters
+
     public int getId() {
         return id;
     }
@@ -46,22 +46,29 @@ public class Carrera implements Serializable {
         this.nombre = nombre;
     }
 
-    public LinkedList<Materia> getListaMaterias() {
-        return listaMaterias;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setListaMaterias(LinkedList<Materia> listaMaterias) {
-        this.listaMaterias = listaMaterias;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Carrera getCarre() {
+        return carre;
+    }
+
+    public void setCarre(Carrera carre) {
+        this.carre = carre;
     }
 
     @Override
     public String toString() {
-        return "Carrera{" + "id=" + id + ", nombre=" + nombre + ", listaMaterias=" + listaMaterias + '}';
+        return "Materia{" + "id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", carre=" + carre + '}';
     }
     
     
 
-    
-    
+   
     
 }

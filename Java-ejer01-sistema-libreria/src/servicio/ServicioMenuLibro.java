@@ -25,7 +25,9 @@ public class ServicioMenuLibro {
         do {
             do {
              System.out.println("Ingrese la operacion a realizar:\n1. Crear Libro \n2. Mostrar Libro\n3. Editar un libro"
-                     + "\n4. Eliminar un libro\n5. Mostra lista completa de libros \n0. Volver al menu principal");
+                     + "\n4. Dar de baja y/o Eliminar un libro\n5. Mostrar lista completa de libros"
+                     + "\n6. Mostrar libro por Titulo \n7. Mostrar libros por autor"
+                     + "\n8. mostrar Libros por editorial \n0. Volver al menu principal");
              
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -36,7 +38,7 @@ public class ServicioMenuLibro {
             }
             
             
-        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=0 );
+        } while (opcion!=1 && opcion!=2 && opcion!=3  && opcion!=4 && opcion!=5 && opcion!=6 && opcion!=7 && opcion!=8 && opcion!=0 );
         
        
             switch(opcion)
@@ -60,27 +62,33 @@ public class ServicioMenuLibro {
                     menuEditarLibro(libroEdit);
                 break;
                 case 4:
-                    System.out.println("Vamos a eliminar un Libro");
-                    System.out.println("Para eso primero tenemos que darlos de baja");
+                    System.out.println("Vamos a dar de baja un Libro");                   
                     mostrarListaLibros();
                     System.out.println("Seleccione el ISBN del LIBRO a dar de baja: ");
                     long isbnLibro= scan.nextInt();
                     Libro libroEdit2 = control.traerLibro(isbnLibro);
                     libroEdit2.setAlta(false);
                     control.editarLibro(libroEdit2);
-                    control.eliminarLibro(isbnLibro);
+                    System.out.println("Quieres eliminar completamente el libro de la base de datos ? s/n");
+                    String respuesta = scan.next();
+                        if (respuesta.equalsIgnoreCase("s")) {
+                            control.eliminarLibro(isbnLibro);
+                        }
                     break;
                 case 5:
                     mostrarListaLibros();
                     break;
                 case 6:
-                    
+                    System.out.println("Vamos a mostrar un libro por titulo");
+                    System.out.println("Ingrese el nombre del libro: ");
+                    String buscarNombre = scan.next();
+                    control.traerLiboPorTitulo(buscarNombre);
                     break;
                 case 7:
-                    
+                    System.out.println("Vamos a mostrar libros por nombre de autor: ");
                     break;
                 case 8:
-                    
+                    System.out.println("Vamos a Mostrar libros por editorial");
                     break;
                 case 0: break;
             }
@@ -114,9 +122,9 @@ public class ServicioMenuLibro {
     public void mostrarListaLibros(){
         System.out.println("La lista total de Libros es la siguiente: ");
         ArrayList<Libro>listalibros = control.traerListaLibros();
-        System.out.println("ISBN\tNOMBRE           \tANIO\tTOTAL\tPRESTADOS\tRESTANTES\tALTA\tAUTOR\tEDITORIAL");
+        System.out.printf("%-5s %-20s %-10s %-10s %-10s %-10s %-10s %-20s %-10s\n", "ISBN","NOMBRE", "ANIO","TOTAL","PRESTADOS","RESTANTES","ALTA","AUTOR","EDITORIAL");
         for (Libro aux : listalibros) {
-            System.out.println(aux);
+            aux.imprimirLindo();
         }
        System.out.println("------------------");
     }

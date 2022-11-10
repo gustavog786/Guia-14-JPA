@@ -47,7 +47,10 @@ public class ControladoraPersistencia {
        ArrayList<Libro>listaLibros = new ArrayList<>(lista);
        return listaLibros;
     }
-
+    
+    public void traerLibroPorTitulo( String titulo){
+        libroJpa.consutaLibroNombre(titulo);
+    }
     
     //Metodos Editorial
     public void crearEditorial(Editorial editorial) {
