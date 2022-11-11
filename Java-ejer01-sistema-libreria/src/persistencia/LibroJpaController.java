@@ -176,4 +176,19 @@ public class LibroJpaController implements Serializable {
         }
 
     }
+     
+      public void consultaLibroEditorial(String editorial) {
+          EntityManager em = getEntityManager();
+        try {
+            List<Libro> libros = em.createQuery("SELECT a FROM Libro a"
+                    + " WHERE a.editorial.nombre = :editorial").setParameter("editorial", editorial).getResultList();
+            for (Libro libro : libros) {
+                System.out.println(libro.toString());
+                System.out.println("");
+            }
+        } catch (Exception e) {
+            System.out.println("Editorial no encontrada");
+            System.out.println(e);
+        }
+    }
 }

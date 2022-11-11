@@ -33,9 +33,18 @@ public class ControladoraJPA {
         
         return controlPersis.traerListaLibros();        
     }
-    public void traerLiboPorTitulo(String titulo){
+    public void traerLibroPorTitulo(String titulo){
         controlPersis.traerLibroPorTitulo(titulo);
     }
+    
+    public void traerLibroPorAutor( String autor){
+        controlPersis.traerLibroPorAutor(autor);
+    }
+    
+    public void traerLibroPorEditorial(String editorial){
+        controlPersis.traerLibroPorEditorial(editorial);
+    }
+    
     
     //Editorial
     public void crearEditorial(Editorial editorial){
@@ -89,6 +98,59 @@ public class ControladoraJPA {
     public ArrayList<Autor> traerListaAutores(){
         
         return controlPersis.traerListaAutores();        
+    }
+    
+    //Prestamo
+    
+     public void crearPrestamo(Prestamo prestamo){
+        
+        controlPersis.crearPrestamo(prestamo);  
+    }
+    
+    public void eliminarPrestamo(int id){
+        
+        controlPersis.eliminarPrestamo(id);
+    }
+    
+    public void editarPrestamo(Prestamo prestamo){
+        
+        controlPersis.editarPrestamo(prestamo);
+    }
+    
+    public Prestamo traerPrestamo(int id){
+
+        return controlPersis.traerPrestamo(id);
+    }
+    
+    public ArrayList<Prestamo> traerListaPrestamos(){
+        
+        return controlPersis.traerListaPrestamos();        
+    }
+    
+    //Cliente
+      public void crearCliente(Cliente cliente){
+        
+        controlPersis.crearCliente(cliente);  
+    }
+    
+    public void eliminarCliente(int id){
+        
+        controlPersis.eliminarCliente(id);
+    }
+    
+    public void editarCliente(Cliente cliente){
+        
+        controlPersis.editarCliente(cliente);
+    }
+    
+    public Cliente traerCliente(int id){
+
+        return controlPersis.traerCliente(id);
+    }
+    
+    public ArrayList<Cliente> traerListaClientes(){
+        
+        return controlPersis.traerListaClientes();        
     }
     
 }

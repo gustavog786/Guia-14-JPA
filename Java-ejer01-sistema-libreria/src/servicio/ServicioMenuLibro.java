@@ -82,13 +82,19 @@ public class ServicioMenuLibro {
                     System.out.println("Vamos a mostrar un libro por titulo");
                     System.out.println("Ingrese el nombre del libro: ");
                     String buscarNombre = scan.next();
-                    control.traerLiboPorTitulo(buscarNombre);
+                    control.traerLibroPorTitulo(buscarNombre);
                     break;
                 case 7:
                     System.out.println("Vamos a mostrar libros por nombre de autor: ");
+                    System.out.println("Ingrese el nombre del autor: ");
+                    String buscarAutor= scan.next();
+                    control.traerLibroPorAutor(buscarAutor);
                     break;
                 case 8:
                     System.out.println("Vamos a Mostrar libros por editorial");
+                    System.out.println("Ingrese el nombre de la editorial: ");
+                    String buscarEditorial=scan.next();
+                    control.traerLibroPorEditorial(buscarEditorial);
                     break;
                 case 0: break;
             }
