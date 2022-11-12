@@ -106,6 +106,10 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Cliente{" + "id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + '}';
     }
+
+    public void imprimirLindo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

@@ -38,7 +38,7 @@ public class PrincipalEjer01 {
         
         //ServicioMenu sm = new ServicioMenu();
         // sm.menu();
-         ControladoraJPA control = new ControladoraJPA();
+         //ControladoraJPA control = new ControladoraJPA();
          
          // Primero tengo que crear una editoria y un autor ya que son atributos de libro
         //Creo editorial
@@ -71,6 +71,9 @@ public class PrincipalEjer01 {
         
         //YA estan cargados la pruba salio bien
         
+        ServicioMenu sm = new ServicioMenu();
+        sm.menu();
+        ControladoraJPA control = new ControladoraJPA();
     }
     
 }
