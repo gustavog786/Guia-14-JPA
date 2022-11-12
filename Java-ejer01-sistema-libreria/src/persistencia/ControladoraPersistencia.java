@@ -157,7 +157,10 @@ public class ControladoraPersistencia {
         ArrayList<Prestamo> listaPrestamo = new ArrayList<>(listap);
         return listaPrestamo;
     }
-
+    
+     public void traerPrestamoPorCliente(String cliente) {
+        prestamoJpa.consultaPrestamoPorCliente(cliente);
+    }
     
     //Metodos Cliente
     public void crearCliente(Cliente cliente) {
@@ -189,4 +192,6 @@ public class ControladoraPersistencia {
         ArrayList<Cliente> listaClientes = new ArrayList<>(lista);
         return listaClientes;
     }
+
+   
 }

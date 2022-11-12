@@ -140,5 +140,21 @@ public class PrestamoJpaController implements Serializable {
             em.close();
         }
     }
+
+    void consultaPrestamoPorCliente(String cliente) {
+         EntityManager em = getEntityManager();
+        try {
+            List<Prestamo> prestamos = em.createQuery("SELECT a FROM Prestamo a"
+                    + " WHERE a.cliente.nombre = :cliente").setParameter("cliente", cliente).getResultList();
+            for (Prestamo prestamo : prestamos) {
+                System.out.println(prestamo.toString());
+                System.out.println("");
+            }
+            System.out.println("----------------------");
+        } catch (Exception e) {
+            System.out.println("Editorial no encontrada");
+            System.out.println(e);
+        }
+    }
     
 }

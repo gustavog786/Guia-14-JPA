@@ -108,7 +108,7 @@ public class Cliente implements Serializable {
     }
 
     public void imprimirLindo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         System.out.printf( "%-5d %-10d %-10s %-10s %-10s\n", id, documento, nombre, apellido, telefono);
     }
     
     

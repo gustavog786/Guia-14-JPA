@@ -17,8 +17,7 @@ public class ServicioMenuCliente {
         do {
             do {
              System.out.println("Ingrese la operacion a realizar:\n1. Crear Cliente \n2. Mostrar Cliente por Id\n3. Editar Cliente"
-                     + "\n4. Eliminar Cliente\n5. Mostrar lista completa de Clientes\n6. Finalizar un Prestamo"
-                     + "(devolver un libro)\n7. Buscar todos los préstamos de un Cliente. \n0. Volver al menu principal");
+                     + "\n4. Eliminar Cliente\n5. Mostrar lista completa de Clientes \n0. Volver al menu principal");
              
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -73,6 +72,8 @@ public class ServicioMenuCliente {
                     break;
                 case 6:
                     
+                    
+                    
                     break;
                 case 7:
                     
@@ -92,7 +93,7 @@ public class ServicioMenuCliente {
     public void mostrarListaClientes(){
         System.out.println("La lista total de autores es la siguiente: ");
         ArrayList<Cliente>listaClientes = control.traerListaClientes();
-        System.out.printf("%-5s %-15s %-10s\n", "ID","NOMBRE", "ALTA");
+        System.out.printf("%-5s%-10s %-10s %-10s %-10s\n", "ID","DOCUMENTO","NOMBRE", "APELLIDO","TELEFONO" );
         for (Cliente listaCliente : listaClientes) {
             listaCliente.imprimirLindo();
         }

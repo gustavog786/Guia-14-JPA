@@ -127,6 +127,10 @@ public class ControladoraJPA {
         return controlPersis.traerListaPrestamos();        
     }
     
+     public void traerPrestamoPorCliente( String cliente){
+        controlPersis.traerPrestamoPorCliente(cliente);
+    }
+    
     //Cliente
       public void crearCliente(Cliente cliente){
         

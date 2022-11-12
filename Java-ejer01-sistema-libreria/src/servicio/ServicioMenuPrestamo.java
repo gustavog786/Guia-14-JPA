@@ -23,7 +23,8 @@ public class ServicioMenuPrestamo {
         do {
             do {
              System.out.println("Ingrese la operacion a realizar:\n1. Crear Prestamo \n2. Mostrar Prestamo por Id\n3. Editar Prestamo"
-                     + "\n4. Dar de baja y/o Eliminar Prestamo\n5. Mostrar lista completa de Prestamos \n0. Volver al menu principal");
+                     + "\n4. Dar de baja y/o Eliminar Prestamo\n5. Mostrar lista completa de Prestamos \n6. Finalizar un Prestamo"
+                     + "(devolver un libro)\n7. Buscar todos los préstamos de un Cliente. \n0. Volver al menu principal");
              
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -69,10 +70,23 @@ public class ServicioMenuPrestamo {
                     mostrarListaPrestamos();
                     break;
                 case 6:
-                    
+                    System.out.println("Elegiste finalizar un prestamo. ");
+                    mostrarListaPrestamos();
+                    System.out.println("Ingrese el Id del prestamo a finalizar: ");
+                    int idFinPrestamo = scan.nextInt();
+                    Prestamo prestamoFin = control.traerPrestamo(idFinPrestamo);
+                    prestamoFin.setCliente( null);
+                    control.editarPrestamo(prestamoFin);
+                    System.out.println("Desea eliminar completamente el prestamo de la BD? s/n");
+                    String respuestaFin = scan.next();
+                        if (respuestaFin.equalsIgnoreCase("s")) {
+                            control.eliminarPrestamo(idFinPrestamo);
+                        }
                     break;
                 case 7:
-                    
+                    System.out.println("Ingres el nombre del cliente para ver sus prestamos: ");
+                    String buscarNombreCliente= scan.next();
+                    control.traerPrestamoPorCliente(buscarNombreCliente);
                     break;
                 case 8:
                     
@@ -88,7 +102,8 @@ public class ServicioMenuPrestamo {
     public void mostrarListaPrestamos(){
         System.out.println("La lista total de autores es la siguiente: ");
         ArrayList<Prestamo>listaprestamos = control.traerListaPrestamos();
-        System.out.printf("%-5s %-15s %-10s\n", "ID","NOMBRE", "ALTA");
+        System.out.printf("%-5s %-20s %-20s %-20s %-10s\n", "ID","FECHA PRESTAMO", "FECHA DEVOLUCION",
+                "LIBRO", "CLIENTE");
         for (Prestamo listapres : listaprestamos) {
             listapres.imprimirLindo();
         }
@@ -111,6 +126,11 @@ public class ServicioMenuPrestamo {
         System.out.println("Seleccione el ISBN del libro que quiere: ");
         long isbnprestamo = scan.nextLong();
         Libro libroPrestado = control.traerLibro(isbnprestamo);
+        
+        //ACA armo la logica para restar un libro y asinarlo a la BD
+        libroPrestado.setEjemplaresPrestados(libroPrestado.getEjemplaresPrestados()+1);
+        libroPrestado.setEjemplaresRestantes(libroPrestado.getEjemplaresRestantes()-1);
+        control.editarLibro(libroPrestado);
         smc.mostrarListaClientes();
         System.out.println("Seleccione el Id del cliente: ");
         int idClientePrestamo = scan.nextInt();
