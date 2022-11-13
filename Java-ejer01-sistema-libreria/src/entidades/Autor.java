@@ -15,7 +15,6 @@ public class Autor implements Serializable {
     private String nombre;
     private boolean alta;
     
-    
     //contructores
 
     public Autor() {
@@ -58,6 +57,34 @@ public class Autor implements Serializable {
     public void setAlta(boolean alta) {
         this.alta = alta;
     }
+    
+    //Hash code and equals
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Autor other = (Autor) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+    
     
     //to string
 

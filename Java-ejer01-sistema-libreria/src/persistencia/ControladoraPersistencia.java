@@ -191,7 +191,5 @@ public class ControladoraPersistencia {
         List<Cliente> lista = clienteJpa.findClienteEntities();
         ArrayList<Cliente> listaClientes = new ArrayList<>(lista);
         return listaClientes;
-    }
-
-   
+    }   
 }

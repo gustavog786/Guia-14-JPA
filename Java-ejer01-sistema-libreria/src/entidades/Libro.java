@@ -115,8 +115,31 @@ public class Libro implements Serializable {
         this.editorial = editorial;
     }
 
-   
-  
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + (int) (this.isbn ^ (this.isbn >>> 32));
+        return hash;
+    }
+
+    //Hash code and equals
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Libro other = (Libro) obj;
+        if (this.isbn != other.isbn) {
+            return false;
+        }
+        return true;
+    }
 
     //to String
 

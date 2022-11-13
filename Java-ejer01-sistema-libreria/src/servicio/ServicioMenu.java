@@ -13,7 +13,7 @@ public class ServicioMenu {
     ServicioMenuCliente smc = new ServicioMenuCliente();
     ServicioMenuPrestamo smp = new ServicioMenuPrestamo();
     ServicioMenuEditorial sme = new ServicioMenuEditorial();
-    private Scanner scan = new Scanner(System.in).useDelimiter("\n");
+    private final Scanner scan = new Scanner(System.in).useDelimiter("\n");
     
     public void menu(){
          System.out.println("Bienvenodo al sistema de Libreria ");
@@ -29,9 +29,8 @@ public class ServicioMenu {
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
             }               
-        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=0 );
+        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 && opcion!=0 );
         
-       
             switch(opcion)
             {
                 case 1:    

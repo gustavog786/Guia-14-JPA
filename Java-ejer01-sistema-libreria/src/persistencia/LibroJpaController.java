@@ -17,10 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author gusta
- */
+
 public class LibroJpaController implements Serializable {
 
     public LibroJpaController(EntityManagerFactory emf) {

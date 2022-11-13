@@ -14,7 +14,7 @@ public class ServicioMenuPrestamo {
     ControladoraJPA control = new ControladoraJPA();
     ServicioMenuLibro sml = new ServicioMenuLibro();
     ServicioMenuCliente smc = new ServicioMenuCliente();
-    private Scanner scan = new Scanner(System.in).useDelimiter("\n");
+    private final Scanner scan = new Scanner(System.in).useDelimiter("\n");
     
     public void menuPrestamo(){
     
@@ -35,7 +35,8 @@ public class ServicioMenuPrestamo {
             }
             
             
-        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 && opcion!=0 );
+        } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 &&
+                    opcion!=6 && opcion!=7 && opcion!=0 );
         
        
             switch(opcion)
@@ -44,6 +45,10 @@ public class ServicioMenuPrestamo {
                     System.out.println("Vamoa a crear un prestamo:");
                     Prestamo p1 = menuCrearPrestamo();
                     control.crearPrestamo(p1);
+                    int diferencia = (int) (( p1.getFechaDevolucion().getTime()- p1.getFechaPrestamo().getTime())/1000/60/60/24);
+                    System.out.println("El prestamo ha sido creado exitosamente y tiene una duracion de "
+                            + diferencia + " dias");
+                    
                     break;
                 case 2:
                     System.out.println("Ingrese el id del prestamo: ");
@@ -146,19 +151,14 @@ public class ServicioMenuPrestamo {
             do {
              System.out.println("Ingrese la operacion a realizar:\n1. Editar fechaPrestamo \n2. Editar fechaDevolucion\n3. Editar libro prestado"
                      + "\n4. Editar Cliente de prestamo \n0. Volver al menu principal");
-             
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
                 opcion=Integer.parseInt(scan.next());
                 break;
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
-            }
-            
-            
+            }    
         } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=0 );
-        
-       
             switch(opcion)
             {
                 case 1:    

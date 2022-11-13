@@ -1,13 +1,7 @@
 
 package principal;
 
-import entidades.Autor;
-import entidades.Cliente;
 import entidades.ControladoraJPA;
-import entidades.Editorial;
-import entidades.Libro;
-import entidades.Prestamo;
-import java.util.Date;
 import servicio.ServicioMenu;
 
 

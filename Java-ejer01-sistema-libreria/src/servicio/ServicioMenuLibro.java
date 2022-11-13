@@ -28,7 +28,6 @@ public class ServicioMenuLibro {
                      + "\n4. Dar de baja y/o Eliminar un libro\n5. Mostrar lista completa de libros"
                      + "\n6. Mostrar libro por Titulo \n7. Mostrar libros por autor"
                      + "\n8. mostrar Libros por editorial \n0. Volver al menu principal");
-             
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
                 opcion=Integer.parseInt(scan.next());
@@ -36,11 +35,8 @@ public class ServicioMenuLibro {
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
             }
-            
-            
         } while (opcion!=1 && opcion!=2 && opcion!=3  && opcion!=4 && opcion!=5 && opcion!=6 && opcion!=7 && opcion!=8 && opcion!=0 );
         
-       
             switch(opcion)
             {
                 case 1:    
@@ -98,8 +94,7 @@ public class ServicioMenuLibro {
                     break;
                 case 0: break;
             }
-        } while (opcion != 0);
-        
+        } while (opcion != 0);   
     }
     //Submetodos
     public Libro crearLibroMenu(){
@@ -125,6 +120,7 @@ public class ServicioMenuLibro {
         
         return  new Libro(isbn, nombre, anio, ejemplaresTotal, ejemplaresPrestados, ejemplaresRestantes, true, autorlibro, editorialLibro);
     }
+    
     public void mostrarListaLibros(){
         System.out.println("La lista total de Libros es la siguiente: ");
         ArrayList<Libro>listalibros = control.traerListaLibros();
@@ -149,12 +145,10 @@ public class ServicioMenuLibro {
                 break;
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
-            }
-            
+            }     
             
         } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 && opcion!=6 && opcion!=0 );
         
-       
             switch(opcion)
             {
                 case 1:    

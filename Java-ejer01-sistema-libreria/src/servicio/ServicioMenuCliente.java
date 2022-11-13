@@ -16,20 +16,17 @@ public class ServicioMenuCliente {
         int opcion = 20;
         do {
             do {
-             System.out.println("Ingrese la operacion a realizar:\n1. Crear Cliente \n2. Mostrar Cliente por Id\n3. Editar Cliente"
+             System.out.println("Ingrese la operacion a realizar:\n1. Crear Cliente \n2. Mostrar "
+                     + "Cliente por Id\n3. Editar Cliente"
                      + "\n4. Eliminar Cliente\n5. Mostrar lista completa de Clientes \n0. Volver al menu principal");
-             
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
                 opcion=Integer.parseInt(scan.next());
                 break;
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
-            }
-            
-            
+            }    
         } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 && opcion!=0 );
-        
        
             switch(opcion)
             {
@@ -71,9 +68,7 @@ public class ServicioMenuCliente {
                     mostrarListaClientes();
                     break;
                 case 6:
-                    
-                    
-                    
+                     
                     break;
                 case 7:
                     
@@ -98,7 +93,6 @@ public class ServicioMenuCliente {
             listaCliente.imprimirLindo();
         }
        System.out.println("------------------");
-    
     }
     
     private void menuEditarCliente(Cliente c1) {
@@ -115,12 +109,9 @@ public class ServicioMenuCliente {
                 break;
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
-            }
-            
-            
+            }   
         } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=0 );
         
-       
             switch(opcion)
             {
                 case 1:    

@@ -25,9 +25,7 @@ public class ServicioMenuAutor {
                 break;
                 }catch(Exception ex) {
                     System.out.println("Error, ingrese un numero ");
-            }
-            
-            
+            }   
         } while (opcion!=1 && opcion!=2 && opcion!=3 && opcion!=4 && opcion!=5 && opcion!=0 );
         
        
@@ -85,8 +83,7 @@ public class ServicioMenuAutor {
                 case 0: 
                     break;
             }
-        } while (opcion != 0);
-        
+        } while (opcion != 0);    
     }
     
     //SubMetodos

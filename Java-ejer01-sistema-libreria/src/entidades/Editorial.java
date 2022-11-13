@@ -25,16 +25,13 @@ public class Editorial implements Serializable {
         this.alta = alta;
     }
 
-    
     public Editorial(int id, String nombre, boolean alta) {
         this.id = id;
         this.nombre = nombre;
         this.alta = alta;
     }
-    
-    
+        
     //Getter and setters
-
     public int getId() {
         return id;
     }
@@ -59,9 +56,33 @@ public class Editorial implements Serializable {
         this.alta = alta;
     }
     
-    
-    //to String
+    //Hash code and equals
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + this.id;
+        return  hash ;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Editorial other = (Editorial) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
+    //to String
     @Override
     public String toString() {
         return  id + "\t" + nombre + "\t" + alta ;
