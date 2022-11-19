@@ -18,13 +18,16 @@ public class ServicioMenuPrestamo {
     
     public void menuPrestamo(){
     
-        System.out.println("Bienvenodo al sistema de Autor ");
+        System.out.println("Bienvenodo al sistema de Prestamo ");
         int opcion = 20;
         do {
             do {
-             System.out.println("Ingrese la operacion a realizar:\n1. Crear Prestamo \n2. Mostrar Prestamo por Id\n3. Editar Prestamo"
-                     + "\n4. Dar de baja y/o Eliminar Prestamo\n5. Mostrar lista completa de Prestamos \n6. Finalizar un Prestamo"
-                     + "(devolver un libro)\n7. Buscar todos los préstamos de un Cliente. \n0. Volver al menu principal");
+             System.out.println("Ingrese la operacion a realizar:\n1. Crear Prestamo"
+                     + " \n2. Mostrar Prestamo por Id\n3. Editar Prestamo"
+                     + "\n4. Dar de baja y/o Eliminar Prestamo\n5. Mostrar lista "
+                     + "completa de Prestamos \n6. Finalizar un Prestamo"
+                     + "(devolver un libro)\n7. Buscar todos los préstamos de un"
+                     + " Cliente. \n0. Volver al menu principal");
              
             try {
                 opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -43,12 +46,17 @@ public class ServicioMenuPrestamo {
             {
                 case 1:    
                     System.out.println("Vamoa a crear un prestamo:");
-                    Prestamo p1 = menuCrearPrestamo();
-                    control.crearPrestamo(p1);
-                    int diferencia = (int) (( p1.getFechaDevolucion().getTime()- p1.getFechaPrestamo().getTime())/1000/60/60/24);
-                    System.out.println("El prestamo ha sido creado exitosamente y tiene una duracion de "
+                    sml.mostrarListaLibros();
+                    System.out.println("Ingrese el ISBN  del libro que quiere: ");
+                    long isbnPrestar =scan.nextLong();
+                    Libro l1 = control.traerLibro(isbnPrestar);
+                    if (l1.getEjemplaresRestantes()> 0) {
+                         Prestamo p1 = menuCrearPrestamo();
+                        control.crearPrestamo(p1);
+                        int diferencia = (int) (( p1.getFechaDevolucion().getTime()- p1.getFechaPrestamo().getTime())/1000/60/60/24);
+                        System.out.println("El prestamo ha sido creado exitosamente y tiene una duracion de "
                             + diferencia + " dias");
-                    
+                    }else{ System.out.println("Libro no disponible");}                   
                     break;
                 case 2:
                     System.out.println("Ingrese el id del prestamo: ");
@@ -134,7 +142,12 @@ public class ServicioMenuPrestamo {
         
         //ACA armo la logica para restar un libro y asinarlo a la BD
         libroPrestado.setEjemplaresPrestados(libroPrestado.getEjemplaresPrestados()+1);
-        libroPrestado.setEjemplaresRestantes(libroPrestado.getEjemplaresRestantes()-1);
+        if (libroPrestado.getEjemplaresRestantes() > 0) {
+            libroPrestado.setEjemplaresRestantes(libroPrestado.getEjemplaresRestantes()-1);
+            }else{
+                System.out.println("Libro no disponible");
+            }
+        
         control.editarLibro(libroPrestado);
         smc.mostrarListaClientes();
         System.out.println("Seleccione el Id del cliente: ");

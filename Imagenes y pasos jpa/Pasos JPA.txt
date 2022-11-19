@@ -1,0 +1,37 @@
+1_ Creo la BD
+2_ Creo los paquetes: principal, entidades, persistencia, servicios
+3_ Creo las clases principales y las tranformo en entidades @Entity
+4_Creo persistence.xml
+	_Persistence unit name: LibreriaJPAPU
+	_Jdbc connection: ?useSSL=false
+	_Agregar las entidades(Si luego las modificamos tenemos que borrarlas y volver a agregarlas)
+5_En el paquete persitencia creo el los JPAcontroller(donde se crean los metodos CRUD)
+	_//  CREAR CONSTRUCTOR PARA CREAR LA ENTITY MANAGER FACTORY.-
+    	" public LibroJpaController(){
+        emf = Persistence.createEntityManagerFactory("LibreriaJPAPU");
+    	}"
+	_La controladora de persitencia e instancio los JPacontrollers
+		"LibroJpaController libroJpa = new LibroJpaController();"
+6_En el paquete entidades creo la clase controladora(me permite llamar los metodos del JPAcontroller y poder ejecutarlos en netbeans )
+ 	Instacio la controladora de persistencia
+	"ControladoraPersistencia controlPersis = new ControladoraPersistencia();"
+	_Creo los metodos que voy a llamar en netbeans
+	" public void crearLibro(Libro libro){
+        
+        controlPersis.crearLibro(libro);  
+    	}"
+	_Agrego el metodo crearLibro en la controladora de persistencia.
+7_En la controladora de persistencia defino los metodos, y agrego los respectivos try/catch
+	"public void crearLibro(Libro libro) {
+        libroJpa.create(libro);
+    	}"
+	_Para traer un lista de libro hay que hacer un paso mas ejemplo
+	"public ArrayList<Libro> traerListaLibros() {
+       List<Libro> lista = libroJpa.findLibroEntities();
+       ArrayList<Libro>listaLibros = new ArrayList<>(lista);
+       return listaLibros;
+    	}"
+8_Antes de ejecutar el programa verificar si estas conectado a la base de datos
+9_Pruebo que los metodos funcionen en el main
+10_Armo un menu ya que resulta mas facil ejecutar el programa, ya que si cargo una vez los datos desde el main 
+ para volver a ejecutar el programa tengo que borrar o comentar los que habia probado antes
